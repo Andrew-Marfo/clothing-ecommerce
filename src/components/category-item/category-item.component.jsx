@@ -1,9 +1,9 @@
 import './category-item.styles.scss'
 
-const CategoryItem = (category) => {
+const CategoryItem = ({category}) => {
     const { title, imageUrl } = category;
     return (
-        <div className="category-item">
+        <div className="category-container">
             <div className="background-image"
                 style={{
                     backgroundImage: `url(${imageUrl})`

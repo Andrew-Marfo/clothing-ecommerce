@@ -1,6 +1,6 @@
-import CategoryItem from './components/category-item/category-item.component'
+import CategoryItem from './components/category-item/category-item.component';
 
-import './categories.styles.scss'
+import './categories.styles.scss';
 
 const App = () => {
 
@@ -38,7 +38,7 @@ const App = () => {
         return (
           <CategoryItem key={category.id} category={ category} />
         )
-      })}      
+      })}
    </div>
   );
 }
