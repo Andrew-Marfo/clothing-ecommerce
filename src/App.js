@@ -3,7 +3,7 @@ import Homepage from "./routes/homepage/homepage.component";
 
 const App = () => {
   return <Routes>
-    <Route path="/home" element={<Homepage/>} />
+    <Route path="/" element={<Homepage/>} />
   </Routes>
 }
 
