@@ -9,7 +9,7 @@ const NavigationBar = () => {
                     Logo
                 </Link>
                 <div className="nav-links-container">
-                    <Link className="nav-links" to={"/shop"}>
+                    <Link className="nav-link" to={"/shop"}>
                         Shop
                     </Link>
                 </div>
