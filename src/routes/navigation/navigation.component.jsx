@@ -14,6 +14,18 @@ const NavigationBar = () => {
                     <Link className="nav-link" to={"/shop"}>
                         Shop
                     </Link>
+                    <Link className="nav-link" to={"/shop"}>
+                        Shop
+                    </Link>
+                    <Link className="nav-link" to={"/shop"}>
+                        Shop
+                    </Link>
+                    <Link className="nav-link" to={"/shop"}>
+                        Shop
+                    </Link>
+                    <Link className="nav-link" to={"/shop"}>
+                        Shop
+                    </Link>
                 </div>
             </div>
             <Outlet />
