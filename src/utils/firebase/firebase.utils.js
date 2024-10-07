@@ -1,10 +1,7 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore, doc, collection, addDoc } from "firebase/firestore";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDB4r1zYs1EWvnp_iF2MHMPREfBiWk9xWY",
   authDomain: "crown-clothing-db-8ed4c.firebaseapp.com",
@@ -14,7 +11,6 @@ const firebaseConfig = {
   appId: "1:596119827874:web:750cbc76bead4309a12efb"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 const provider = new GoogleAuthProvider();
@@ -25,3 +21,11 @@ const provider = new GoogleAuthProvider();
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+
+export const db = getFirestore(app);
+
+export const createUserDocumentFromAuth = async (userAuth) => {
+  const userDocRef = doc(db, 'users', userAuth.uid);
+
+  console.log(userDocRef)
+}
