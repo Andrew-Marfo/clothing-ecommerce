@@ -8,7 +8,7 @@ const SignIn = () => {
     }
     return (
         <div className="sign-in">
-            <h1>Sign In Page</h1>
+            <h2>Sign In Page</h2>
             <button onClick={logGoogleUser}> Sign in with Google </button>
             <SignUpForm />
         </div>
