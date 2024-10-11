@@ -22,10 +22,19 @@ const SignInForm = () => {
         console.log(formfield);
     }
 
+    const resetDefaultFormFields = () => {
+        setFormField(defaultFormField);
+    }
+
     const onSubmitHandler = async (event) => {
         event.preventDefault();
-        const response = await signUserInWithEmailAndPassword(email, password);
-        console.log(response);
+        try {
+            const response = await signUserInWithEmailAndPassword(email, password);
+            console.log(response);
+            resetDefaultFormFields();
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 
     const logGoogleUser = async () => {
