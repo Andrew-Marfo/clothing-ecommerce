@@ -34,7 +34,7 @@ const SignInForm = () => {
     }
 
     return (
-        <div className="sign-in-form-container">
+        <div className="sign-in-container">
             <h2>I already have an account</h2>
             <span>Sign in with your email and password</span>
             <form onSubmit={onSubmitHandler}>
@@ -54,10 +54,11 @@ const SignInForm = () => {
                     name="password"
                     value={password}
                 />
-                <Button type={"submit"}>Sign In</Button>
-                <br />
+                <div className="buttons-container">
+                    <Button type={"submit"}>Sign In</Button>
+                    <Button onClick={logGoogleUser} buttonType={"google"}>GOOGLE SIGN IN</Button>
+                </div>
             </form>
-            <Button onClick={logGoogleUser} buttonType={"google"}>  Sign in with Google </Button>
 
         </div>
     );
