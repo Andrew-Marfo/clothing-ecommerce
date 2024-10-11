@@ -33,13 +33,27 @@ const SignInForm = () => {
             console.log(response);
             resetDefaultFormFields();
         } catch (error) {
-            console.log(error.message);
+            switch (error.code) {
+                case "auth/invalid-credential":
+                    alert("Invalid credentials! Try again");
+                    break;
+                default:
+                    alert(`${error.message}`);
+            }
         }
     }
 
     const logGoogleUser = async () => {
-        const { user } = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user);
+        try {
+            const { user } = await signInWithGooglePopup();
+            await createUserDocumentFromAuth(user);
+        } catch (error) {
+            if (error.code === 'auth/popup-closed-by-user') {
+                alert('Sign-in process was canceled. Please try again.');
+            } else {
+                alert('Error during Google sign-in:', error.message);
+            }
+        }
     }
 
     return (
@@ -65,7 +79,7 @@ const SignInForm = () => {
                 />
                 <div className="buttons-container">
                     <Button type={"submit"}>Sign In</Button>
-                    <Button onClick={logGoogleUser} buttonType={"google"}>GOOGLE SIGN IN</Button>
+                    <Button type={'button'} onClick={logGoogleUser} buttonType={"google"}>GOOGLE SIGN IN</Button>
                 </div>
             </form>
 
