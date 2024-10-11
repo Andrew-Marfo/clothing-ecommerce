@@ -1,4 +1,4 @@
-import { signInWithGooglePopup, createUserDocumentFromAuth } from '../../../utils/firebase/firebase.utils';
+import { signInWithGooglePopup, createUserDocumentFromAuth, signUserInWithEmailAndPassword } from '../../../utils/firebase/firebase.utils';
 import FormInput from '../../../components/form-input/form-input.component';
 import Button from '../../../components/button/button.component';
 import { useState } from 'react';
@@ -16,8 +16,16 @@ const SignInForm = () => {
 
     const { email, password } = formfield;
 
-    const signInWithEmailAndPassword = async () => {
-        console.log("Signed in")
+    const onChangeHandler = (event) => {
+        const { name, value } = event.target;
+        setFormField({ ...formfield, [name]: value })
+        console.log(formfield);
+    }
+
+    const onSubmitHandler = async (event) => {
+        event.preventDefault();
+        const response = await signUserInWithEmailAndPassword(email, password);
+        console.log(response);
     }
 
     const logGoogleUser = async () => {
@@ -29,24 +37,24 @@ const SignInForm = () => {
         <div className="sign-in-form-container">
             <h2>I already have an account</h2>
             <span>Sign in with your email and password</span>
-            <form onSubmit={() => { }}>
+            <form onSubmit={onSubmitHandler}>
                 <FormInput
                     label={"Email"}
                     type="email"
                     required
-                    onChange={() => { }}
+                    onChange={onChangeHandler}
                     name="email"
                     value={email}
                 />
                 <FormInput
                     label={'password'}
-                    type="email"
+                    type="password"
                     required
-                    onChange={() => { }}
-                    name="email"
+                    onChange={onChangeHandler}
+                    name="password"
                     value={password}
                 />
-                <Button onClick={signInWithEmailAndPassword} type={"submit"}>Sign In</Button>
+                <Button type={"submit"}>Sign In</Button>
                 <br />
             </form>
             <Button onClick={logGoogleUser} buttonType={"google"}>  Sign in with Google </Button>
