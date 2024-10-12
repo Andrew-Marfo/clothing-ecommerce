@@ -23,7 +23,6 @@ const SignInForm = () => {
     const onChangeHandler = (event) => {
         const { name, value } = event.target;
         setFormField({ ...formfield, [name]: value })
-        console.log(formfield);
     }
 
     const resetDefaultFormFields = () => {

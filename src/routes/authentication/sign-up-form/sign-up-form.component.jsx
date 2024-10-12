@@ -22,7 +22,6 @@ const SignUpForm = () => {
     const onChangeHandler = (event) => {
         const { name, value } = event.target;
         setFormFields({ ...formFields, [name]: value });
-        console.log(formFields);
     }
 
     const onSubmitHandler = async (event) => {
@@ -30,7 +29,6 @@ const SignUpForm = () => {
         if (password === confirmPassword) {
             try {
                 const { user } = await signUpWithEmailAndPassword(email, password);
-                console.log(user)
                 const newUserDoc = user;
                 const userDoc = { ...newUserDoc, displayName: displayName };
                 await createUserDocumentFromAuth(userDoc);
@@ -41,7 +39,7 @@ const SignUpForm = () => {
                 } else if (error.code === 'auth/email-already-in-use') {
                     alert('Email is already in use')
                 } else {
-                    console.log('An error occured', error.message);
+                    alert('An error occured', error.message);
                 }
             }
         } else {
